@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Your Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('blog') }}">Blog</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="blog-posts">
+            <h1>Blogs</h1>
+            <article>
+                <h2>First Blog Post</h2>
+                <p>Date: January 2024</p>
+                <p>Blog post content goes here...</p>
+            </article>
+            <article>
+                <h2>Second Blog Post</h2>
+                <p>Date: February 2024</p>
+                <p>Another blog post content...</p>
+            </article>
+        </section>
+    </main>
+
+
+
+    <footer>
+        <p>© 2024 Leva Konaté. All rights reserved.</p>
+        <p>Follow me on my socials:</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/levakonate/" target="_blank">
+                <img src="static/icons/instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/leva.konate" target="_blank">
+                <img src="static/icons/facebook.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/in/levakonate/" target="_blank">
+                <img src="static/icons/linkedin.png" alt="LinkedIn">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("/api/articles")
+                .then(response => response.json())
+                .then(articles => {
+                    const blogSection = document.getElementById("blog-posts");
+                    blogSection.innerHTML = "<h1>My Blog</h1>";  // Clear existing content
+    
+                    articles.forEach(article => {
+                        const articleElement = document.createElement("article");
+                        articleElement.innerHTML = `
+                            <h2><a href="article.html?id=${article.id}">${article.title}</a></h2>
+                            <p><strong>Subtitle:</strong> ${article.subtitle}</p>
+                            <p><small>Date: ${article.date}</small></p>
+                            <hr>
+                        `;
+                        blogSection.appendChild(articleElement);
+                    });
+                })
+                .catch(error => console.error("Error loading articles:", error));
+        });
+    </script>
+</body>
+</html>

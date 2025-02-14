@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leva Konate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('blog') }}">Blog</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="hero">
+            <h1>Leva Konaté</h1>
+            <h2>Entrepreneur | Web Developer | Creator</h2>
+            <img src="{{ url_for('static', filename='images/solarpunk.jpg') }}" 
+            alt="Your Profile Picture"  style="width: 700px; height: 600px; object-fit: cover;">  
+          
+
+        </section>
+
+        <section id="intro">
+            <h3>The snippets of Me, I allow the World to See</h3>
+            <p>This website was created to share my perspective on the world, challenge exploitative systems and oppressive ideologies, and broadcast my entrepreneurial dreams to the Universe.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Leva Konaté. All rights reserved.</p>
+        <p>Follow me on my socials:</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/levakonate/" target="_blank">
+                <img src="static/icons/instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/leva.konate" target="_blank">
+                <img src="static/icons/facebook.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/in/levakonate/" target="_blank">
+                <img src="static/icons/linkedin.png" alt="LinkedIn">
+            </a>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

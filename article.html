@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="article-content">
+            <h1>Loading article...</h1>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const articleId = urlParams.get("id");
+
+            if (!articleId) {
+                document.getElementById("article-content").innerHTML = "<h1>Article Not Found</h1>";
+                return;
+            }
+
+            fetch(`/api/article/${articleId}`)
+                .then(response => response.json())
+                .then(article => {
+                    if (article.error) {
+                        document.getElementById("article-content").innerHTML = "<h1>Article Not Found</h1>";
+                        return;
+                    }
+
+                    document.getElementById("article-content").innerHTML = `
+                        <h1>${article.title}</h1>
+                        <p><strong>Subtitle:</strong> ${article.subtitle}</p>
+                        <p><small>Date: ${article.date}</small></p>
+                        <p>${article.content}</p>
+                        <hr>
+                        <a href="blog.html">Back to Blog</a>
+                    `;
+                })
+                .catch(error => console.error("Error loading article:", error));
+        });
+    </script>
+</body>
+</html>

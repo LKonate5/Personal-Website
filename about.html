@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Your Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('blog') }}">Blog</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="about-me">
+            <h1>About Me</h1>
+            <p>"Just Be & Live Consciously"</p>
+            <br><br>
+            <img src="{{ url_for('static', filename='images/post.jpg') }}" 
+            alt="Your Profile Picture"  style="width: 600px; height: 600px; object-fit: cover;">  
+            <div class="bio">
+            </div>
+            <br><br>
+            <div class="skills">
+                <h2>Library</h2>
+                <ul>
+                    <li><a href="static/pdfs/virtuous.pdf" target="_blank">Virtuous</a></li>
+                    <li><a href="static/pdfs/deconstruction.pdf" target="_blank">Deconstruction of the Productive Day</a></li>
+                    <li><a href="static/pdfs/four_empires.pdf" target="_blank">The Four Empires</a></li>
+                    <li><a href="static/pdfs/reading_knowledge.pdf" target="_blank">Knowledge from my Readings</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Leva Konaté. All rights reserved.</p>
+        <p>Follow me on my socials:</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/levakonate/" target="_blank">
+                <img src="static/icons/instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/leva.konate" target="_blank">
+                <img src="static/icons/facebook.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/in/levakonate/" target="_blank">
+                <img src="static/icons/linkedin.png" alt="LinkedIn">
+            </a>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
